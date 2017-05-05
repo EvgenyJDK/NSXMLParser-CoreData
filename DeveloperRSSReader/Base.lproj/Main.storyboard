@@ -19,20 +19,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fbN-6l-UfT">
-                                <rect key="frame" x="0.0" y="64" width="600" height="83"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbN-6l-UfT">
+                                <rect key="frame" x="0.0" y="64" width="600" height="40"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awg-fm-5ct">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="83"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awg-fm-5ct">
+                                        <rect key="frame" x="20" y="0.0" width="560" height="40"/>
+                                        <color key="backgroundColor" red="0.043137254901960784" green="0.32549019607843138" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <color key="textColor" red="0.77564102560000003" green="0.77564102560000003" blue="0.77564102560000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.043137254899999998" green="0.32549019610000002" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="awg-fm-5ct" firstAttribute="top" secondItem="fbN-6l-UfT" secondAttribute="top" id="3vO-bc-8P7"/>
+                                    <constraint firstItem="awg-fm-5ct" firstAttribute="centerX" secondItem="fbN-6l-UfT" secondAttribute="centerX" id="DY3-tt-mef"/>
+                                    <constraint firstAttribute="bottom" secondItem="awg-fm-5ct" secondAttribute="bottom" id="eh7-JT-kB1"/>
+                                    <constraint firstAttribute="trailing" secondItem="awg-fm-5ct" secondAttribute="trailing" constant="20" id="fe2-kv-KET"/>
+                                    <constraint firstAttribute="height" constant="40" id="qhU-HQ-2rP"/>
+                                    <constraint firstItem="awg-fm-5ct" firstAttribute="leading" secondItem="fbN-6l-UfT" secondAttribute="leading" constant="20" id="s9d-pt-ga1"/>
+                                </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="127" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g9Z-DA-X3r">
-                                <rect key="frame" x="0.0" y="146" width="600" height="454"/>
+                                <rect key="frame" x="0.0" y="117" width="600" height="483"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RSSCell" rowHeight="127" id="Uyp-BE-H8r" customClass="RSSTableViewCell" customModule="DeveloperRSSReader" customModuleProvider="target">
@@ -43,19 +52,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIl-6d-2ez">
-                                                    <rect key="frame" x="23" y="15" width="201" height="25"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vv1-WF-vfI">
-                                                    <rect key="frame" x="23" y="48" width="201" height="25"/>
+                                                    <rect key="frame" x="23" y="15" width="555" height="25"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ns4-QX-O5S">
-                                                    <rect key="frame" x="230" y="87" width="201" height="25"/>
+                                                    <rect key="frame" x="205" y="87" width="373" height="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vv1-WF-vfI">
+                                                    <rect key="frame" x="23" y="50" width="555" height="25"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -72,6 +81,11 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fbN-6l-UfT" firstAttribute="top" secondItem="Dl5-s5-zFL" secondAttribute="bottom" id="4uQ-Do-NYQ"/>
+                            <constraint firstItem="fbN-6l-UfT" firstAttribute="leading" secondItem="BWm-ew-72s" secondAttribute="leadingMargin" constant="-20" id="7dE-kg-zW3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fbN-6l-UfT" secondAttribute="trailing" constant="-20" id="9bV-5m-vQf"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="UqM-7U-eOv"/>
                     <connections>
@@ -94,7 +108,7 @@
                         <color key="separatorColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RSSCell" editingAccessoryType="detailDisclosureButton" focusStyle="custom" rowHeight="132" id="oOq-Cf-lmg" customClass="RSSTableViewCell" customModule="DeveloperRSSReader" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RSSC" editingAccessoryType="detailDisclosureButton" focusStyle="custom" rowHeight="132" id="oOq-Cf-lmg" customClass="RSSTableViewCell" customModule="DeveloperRSSReader" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="132"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" tableViewCell="oOq-Cf-lmg" id="kup-CW-KbH">
