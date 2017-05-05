@@ -14,7 +14,7 @@ import CoreData
 
 class RSSReadViewController: UIViewController {
     
-    
+/*
     @IBOutlet var rssTableView: UITableView!
 
     
@@ -230,5 +230,5 @@ class RSSReadViewController: UIViewController {
 
 
 }
-
-
+*/
+}

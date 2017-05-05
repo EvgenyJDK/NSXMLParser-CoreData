@@ -35,13 +35,38 @@
                                 <rect key="frame" x="0.0" y="146" width="600" height="454"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="127" id="Uyp-BE-H8r">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RSSCell" rowHeight="127" id="Uyp-BE-H8r" customClass="RSSTableViewCell" customModule="DeveloperRSSReader" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="127"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uyp-BE-H8r" id="nCG-eN-fGn">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="126"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIl-6d-2ez">
+                                                    <rect key="frame" x="23" y="15" width="201" height="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vv1-WF-vfI">
+                                                    <rect key="frame" x="23" y="48" width="201" height="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ns4-QX-O5S">
+                                                    <rect key="frame" x="230" y="87" width="201" height="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="itemDateLabel" destination="ns4-QX-O5S" id="d5W-Ra-ali"/>
+                                            <outlet property="itemShortContent" destination="vv1-WF-vfI" id="sYQ-tH-x5E"/>
+                                            <outlet property="itemTitle" destination="xIl-6d-2ez" id="No6-Fo-RCw"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -49,6 +74,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="UqM-7U-eOv"/>
+                    <connections>
+                        <outlet property="currentDateLabel" destination="awg-fm-5ct" id="Xtu-qs-M7j"/>
+                        <outlet property="rssTableView" destination="g9Z-DA-X3r" id="V1U-6d-bvf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75p-wr-4CJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -118,11 +147,6 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <connections>
-                                    <outlet property="itemDateLabel" destination="aVu-E4-Tpo" id="yqp-O0-aCD"/>
-                                    <outlet property="itemShortContent" destination="RML-wU-iBP" id="8r6-49-EP4"/>
-                                    <outlet property="itemTitle" destination="pIq-Lq-mPk" id="5qn-d5-dk2"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
