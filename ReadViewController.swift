@@ -162,7 +162,7 @@ class ReadViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-    // MARK: - Navigation. Segue
+// MARK: - Navigation. Segue
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -172,21 +172,14 @@ class ReadViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
         let segueItem = RSSItemDetails(object: rssListCont[sender!.row]) // no good
-        //        let itemDetailsController : ItemDetailsViewController = segue.destinationViewController as! ItemDetailsViewController
-        //        itemDetailsController.rssItemDetails = segueItem
-        
-        //        let itemDetailController : ItemDetailViewController = segue.destinationViewController as! ItemDetailViewController
-        //        itemDetailController.rssItemDetails = segueItem
-        
-        
-        let testController : ItemDetailsViewController = segue.destinationViewController as! ItemDetailsViewController
-        testController.rssItemDetails = segueItem
+        let itemDetailsController : ItemDetailsViewController = segue.destinationViewController as! ItemDetailsViewController
+        itemDetailsController.rssItemDetails = segueItem
         
     }
     
     
     func getPersistentData() {
-        print(rssListCont.count)
+        print("STORAGE = \(rssListCont.count)")
         rssListCont = coreDataService.fetchRSSItems()
         print(rssListCont.count)
     }
