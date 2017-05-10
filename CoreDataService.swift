@@ -102,6 +102,15 @@ class CoreDataService {
 //            }
             count += 1
         }
+        
+//         for (var i=1..<10) {
+//            print("hello")
+//        }
+//        
+//        for (var i=1; i<10; i++) {
+//            
+//        }
+        
         print("FOR END")
 
     }
@@ -194,6 +203,14 @@ class CoreDataService {
         do {
             let results = try managedContext.executeFetchRequest(fetchRequest)
             rssListMOC = results as! [NSManagedObject]
+            rssListMOC.sortInPlace({ $0.0.valueForKey("rssID") as? String > $0.1.valueForKey("rssID") as? String })
+
+            
+/* http://stackoverflow.com/questions/40050495/sort-swift-array-of-dictionaries-by-value */
+/* http://stackoverflow.com/questions/30446812/sort-swift-array-of-dictionaries-by-value-of-a-key */
+/* http://stackoverflow.com/questions/27639993/swift-sort-dictionary-by-value */
+
+            
         }
         catch {
             print("error fetch")
