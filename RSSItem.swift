@@ -11,7 +11,8 @@ import CoreData
 
 struct  RSSItem {
     
-    var title : String!
+    var itemId: String = ""
+    var title : String = ""
     var link : String = ""
     var description : String = ""
     var rssItemDictionary: [String:String]! = Dictionary()

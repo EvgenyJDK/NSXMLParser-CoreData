@@ -11,14 +11,13 @@
 		C30626901EAEC9F1005E3CE1 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C306268F1EAEC9F1005E3CE1 /* ApiService.swift */; };
 		C30626921EAFB646005E3CE1 /* RSSItemDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30626911EAFB646005E3CE1 /* RSSItemDetails.swift */; };
 		C316E5DE1EBC79D700268439 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C316E5DD1EBC79D700268439 /* GlobalConstants.swift */; };
-		C316E5E01EBD3B9700268439 /* ReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C316E5DF1EBD3B9700268439 /* ReadViewController.swift */; };
+		C316E5E01EBD3B9700268439 /* RSSReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C316E5DF1EBD3B9700268439 /* RSSReadViewController.swift */; };
 		C355E65B1EA7D054006D09E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355E65A1EA7D054006D09E4 /* AppDelegate.swift */; };
 		C355E65D1EA7D054006D09E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355E65C1EA7D054006D09E4 /* ViewController.swift */; };
 		C355E6601EA7D054006D09E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C355E65E1EA7D054006D09E4 /* Main.storyboard */; };
 		C355E6631EA7D054006D09E4 /* DeveloperRSSReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C355E6611EA7D054006D09E4 /* DeveloperRSSReader.xcdatamodeld */; };
 		C355E6651EA7D054006D09E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C355E6641EA7D054006D09E4 /* Assets.xcassets */; };
 		C355E6681EA7D054006D09E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C355E6661EA7D054006D09E4 /* LaunchScreen.storyboard */; };
-		C355E6711EA7D1A4006D09E4 /* RSSReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355E6701EA7D1A4006D09E4 /* RSSReadViewController.swift */; };
 		C355E6761EA7D37B006D09E4 /* RSSTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355E6751EA7D37B006D09E4 /* RSSTableViewCell.swift */; };
 		C36BAE631EA8EB1700AAEF3C /* RSSItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BAE621EA8EB1700AAEF3C /* RSSItem.swift */; };
 		C36BAE661EAA218F00AAEF3C /* ParserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BAE651EAA218F00AAEF3C /* ParserService.swift */; };
@@ -34,7 +33,7 @@
 		C306268F1EAEC9F1005E3CE1 /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		C30626911EAFB646005E3CE1 /* RSSItemDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSItemDetails.swift; sourceTree = "<group>"; };
 		C316E5DD1EBC79D700268439 /* GlobalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
-		C316E5DF1EBD3B9700268439 /* ReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadViewController.swift; sourceTree = "<group>"; };
+		C316E5DF1EBD3B9700268439 /* RSSReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSReadViewController.swift; sourceTree = "<group>"; };
 		C355E6571EA7D054006D09E4 /* DeveloperRSSReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeveloperRSSReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C355E65A1EA7D054006D09E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C355E65C1EA7D054006D09E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,7 +42,6 @@
 		C355E6641EA7D054006D09E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C355E6671EA7D054006D09E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C355E6691EA7D054006D09E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C355E6701EA7D1A4006D09E4 /* RSSReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSReadViewController.swift; sourceTree = "<group>"; };
 		C355E6751EA7D37B006D09E4 /* RSSTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSTableViewCell.swift; sourceTree = "<group>"; };
 		C36BAE621EA8EB1700AAEF3C /* RSSItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSItem.swift; sourceTree = "<group>"; };
 		C36BAE651EAA218F00AAEF3C /* ParserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserService.swift; sourceTree = "<group>"; };
@@ -143,8 +141,7 @@
 		C355E66F1EA7D15E006D09E4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C355E6701EA7D1A4006D09E4 /* RSSReadViewController.swift */,
-				C316E5DF1EBD3B9700268439 /* ReadViewController.swift */,
+				C316E5DF1EBD3B9700268439 /* RSSReadViewController.swift */,
 				C3BDFA191EBBECA20028A8D7 /* ItemDetailsViewController.swift */,
 			);
 			name = Controllers;
@@ -315,10 +312,9 @@
 				C355E6761EA7D37B006D09E4 /* RSSTableViewCell.swift in Sources */,
 				C30626901EAEC9F1005E3CE1 /* ApiService.swift in Sources */,
 				C30626921EAFB646005E3CE1 /* RSSItemDetails.swift in Sources */,
-				C355E6711EA7D1A4006D09E4 /* RSSReadViewController.swift in Sources */,
 				C36BAE631EA8EB1700AAEF3C /* RSSItem.swift in Sources */,
 				C36BAE661EAA218F00AAEF3C /* ParserService.swift in Sources */,
-				C316E5E01EBD3B9700268439 /* ReadViewController.swift in Sources */,
+				C316E5E01EBD3B9700268439 /* RSSReadViewController.swift in Sources */,
 				C316E5DE1EBC79D700268439 /* GlobalConstants.swift in Sources */,
 				C355E6631EA7D054006D09E4 /* DeveloperRSSReader.xcdatamodeld in Sources */,
 				C3FFA4291EAD659200DDCBE2 /* CoreDataService.swift in Sources */,

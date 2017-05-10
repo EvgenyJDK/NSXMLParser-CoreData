@@ -7,10 +7,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Read View Controller-->
+        <!--Apple News-->
         <scene sceneID="Gra-lv-J1W">
             <objects>
-                <viewController id="WtK-Wo-Trq" customClass="ReadViewController" customModule="DeveloperRSSReader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WtK-Wo-Trq" customClass="RSSReadViewController" customModule="DeveloperRSSReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dl5-s5-zFL"/>
                         <viewControllerLayoutGuide type="bottom" id="0YR-k7-6cf"/>
@@ -102,7 +102,7 @@
                             <constraint firstItem="g9Z-DA-X3r" firstAttribute="height" secondItem="BWm-ew-72s" secondAttribute="height" id="xmw-LX-6hO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="UqM-7U-eOv"/>
+                    <navigationItem key="navigationItem" title="Apple News" id="UqM-7U-eOv"/>
                     <connections>
                         <outlet property="currentDateLabel" destination="awg-fm-5ct" id="Xtu-qs-M7j"/>
                         <outlet property="rssTableView" destination="g9Z-DA-X3r" id="V1U-6d-bvf"/>

@@ -12,10 +12,11 @@ import UIKit
 class  ParserService : NSObject, NSXMLParserDelegate {
     
     var xmlParser: NSXMLParser!
+    var rssItemId: String!
     var rssTitle: String!
     var rssLink: String!
     var rssDescription: String!
-    var pubDate: String!
+    var rssPubDate: String!
     var parsedItem:String! = String()
     var itemDictionary: [String:String]! = Dictionary()
     
@@ -33,16 +34,15 @@ class  ParserService : NSObject, NSXMLParserDelegate {
         
     }
 
-    
-    
-    func rssFeedService(url: String, callback: () -> Void) {
-        
-        parseFeed(url) { () in
-            self.coreDataService.saveRSSItems(self.rssItem.rssItemsArray)
-            callback()
-         }
-        
-    }
+  
+//    func rssFeedService(url: String, callback: () -> Void) {
+//        
+//        parseFeed(url) { () in
+//            self.coreDataService.saveRSSItems(self.rssItem.rssItemsArray)
+//            callback()
+//         }
+//        
+//    }
     
     
     func parseFeed(url: String, callback: () -> Void) {
@@ -79,7 +79,7 @@ class  ParserService : NSObject, NSXMLParserDelegate {
             parsedItem = "description"
         }
         if elementName == "pubDate"{
-            pubDate = String()
+            rssPubDate = String()
             parsedItem = "pubDate"
         }
     }
@@ -100,8 +100,8 @@ class  ParserService : NSObject, NSXMLParserDelegate {
             self.rssItem.description = rssDescription + string
         }
         if parsedItem == "pubDate"{
-            pubDate = pubDate + string
-            self.rssItem.rssPubDate = pubDate + string
+            rssPubDate = rssPubDate + string
+            self.rssItem.rssPubDate = rssPubDate + string
         }
     }
     
@@ -121,8 +121,11 @@ class  ParserService : NSObject, NSXMLParserDelegate {
             self.rssItem.rssItemDictionary["description"] = rssDescription
         }
         if elementName == "pubDate"{
-            itemDictionary["pubDate"] = pubDate
-            self.rssItem.rssItemDictionary["pubDate"] = pubDate
+            itemDictionary["pubDate"] = rssPubDate
+            self.rssItem.rssItemDictionary["pubDate"] = rssPubDate
+
+            let itemId = formatItemId(self.rssItem.rssItemDictionary["link"]!)
+            self.rssItem.rssItemDictionary["id"] = itemId
             
             self.rssItem.rssItemsArray.append(self.rssItem.rssItemDictionary)
         }
@@ -133,8 +136,31 @@ class  ParserService : NSObject, NSXMLParserDelegate {
     func parserDidEndDocument(parser: NSXMLParser){
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             
+            print("PARSE END = \(self.rssItem.rssItemsArray.count)")
+            
+//            for item in self.rssItem.rssItemsArray {
+//                print(item["pubDate"]!)
+//            }
+            
         })
     }
+    
+    
+    
+    func formatItemId(rssLink: String) -> String {
+        
+        let dateStartIndex = rssLink.startIndex.advancedBy(37)
+        let date = rssLink.substringFromIndex(dateStartIndex)
+        let monthDay = date.substringToIndex(date.endIndex.advancedBy(-5))
+        let yearStartIndex = rssLink.startIndex.advancedBy(41)
+        var year = rssLink.substringFromIndex(yearStartIndex)
+        year.removeAtIndex(year.endIndex.advancedBy(-1))
+
+        let itemIdByDate = year + monthDay
+
+        return itemIdByDate
+    }
+
     
     
 }
