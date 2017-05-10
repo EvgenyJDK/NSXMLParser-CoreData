@@ -23,7 +23,7 @@ struct RSSItemDetails {
         self.title = object.valueForKey("rssTitle") as? String
         self.rssPubDate = object.valueForKey("rssPubDate") as? String
         self.description = (object.valueForKey("rssDescription") as? String)!
-        self.url = object.valueForKey("rssURL") as? String
+        self.url = object.valueForKey("rssLink") as? String
         
         if let imageData = object.valueForKey("rssImage") as? NSData {
             self.image = imageData

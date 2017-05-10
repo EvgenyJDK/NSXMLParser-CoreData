@@ -12,6 +12,7 @@
 		C30626921EAFB646005E3CE1 /* RSSItemDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30626911EAFB646005E3CE1 /* RSSItemDetails.swift */; };
 		C316E5DE1EBC79D700268439 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C316E5DD1EBC79D700268439 /* GlobalConstants.swift */; };
 		C316E5E01EBD3B9700268439 /* RSSReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C316E5DF1EBD3B9700268439 /* RSSReadViewController.swift */; };
+		C3347C871EC3A0BC008BA426 /* ProgressSpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3347C861EC3A0BC008BA426 /* ProgressSpin.swift */; };
 		C355E65B1EA7D054006D09E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355E65A1EA7D054006D09E4 /* AppDelegate.swift */; };
 		C355E65D1EA7D054006D09E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355E65C1EA7D054006D09E4 /* ViewController.swift */; };
 		C355E6601EA7D054006D09E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C355E65E1EA7D054006D09E4 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 		C30626911EAFB646005E3CE1 /* RSSItemDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSItemDetails.swift; sourceTree = "<group>"; };
 		C316E5DD1EBC79D700268439 /* GlobalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		C316E5DF1EBD3B9700268439 /* RSSReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSReadViewController.swift; sourceTree = "<group>"; };
+		C3347C861EC3A0BC008BA426 /* ProgressSpin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressSpin.swift; sourceTree = "<group>"; };
 		C355E6571EA7D054006D09E4 /* DeveloperRSSReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeveloperRSSReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C355E65A1EA7D054006D09E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C355E65C1EA7D054006D09E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,14 @@
 			name = Service;
 			sourceTree = "<group>";
 		};
+		C3347C851EC3A038008BA426 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C3347C861EC3A0BC008BA426 /* ProgressSpin.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		C355E64E1EA7D054006D09E4 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +137,7 @@
 				C3FFA4271EAD656D00DDCBE2 /* Core Data */,
 				C36BAE641EA8F3AD00AAEF3C /* RSSParserService */,
 				C316E5DC1EBC79A800268439 /* Service */,
+				C3347C851EC3A038008BA426 /* UI */,
 				C355E65A1EA7D054006D09E4 /* AppDelegate.swift */,
 				C355E65C1EA7D054006D09E4 /* ViewController.swift */,
 				C355E65E1EA7D054006D09E4 /* Main.storyboard */,
@@ -312,6 +323,7 @@
 				C355E6761EA7D37B006D09E4 /* RSSTableViewCell.swift in Sources */,
 				C30626901EAEC9F1005E3CE1 /* ApiService.swift in Sources */,
 				C30626921EAFB646005E3CE1 /* RSSItemDetails.swift in Sources */,
+				C3347C871EC3A0BC008BA426 /* ProgressSpin.swift in Sources */,
 				C36BAE631EA8EB1700AAEF3C /* RSSItem.swift in Sources */,
 				C36BAE661EAA218F00AAEF3C /* ParserService.swift in Sources */,
 				C316E5E01EBD3B9700268439 /* RSSReadViewController.swift in Sources */,

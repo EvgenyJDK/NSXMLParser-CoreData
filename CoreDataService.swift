@@ -16,9 +16,8 @@ class CoreDataService {
     var rssListMOC = [NSManagedObject]()
     lazy var managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
-    
-//    func saveRSSItems (rssEntities : [[String:String]]) {
-        func saveRSSItems (rssEntities : [[String:AnyObject]]) {
+
+    func saveRSSItems (rssEntities : [[String:AnyObject]]) {
         let rssCheckList = self.fetchRSSItems()
 
         
@@ -176,11 +175,6 @@ class CoreDataService {
     func deleteItem (itemIndex: Int, callback: [NSManagedObject] ->()) {
         
         print(itemIndex)
-        
-        
-//         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Right)
-        
-       
         
         do {
             try managedContext.deleteObject(rssListMOC[itemIndex])

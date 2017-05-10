@@ -14,28 +14,22 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var currentDateLabel: UILabel!
     @IBOutlet weak var rssTableView: UITableView!
-
-    
     
     let apiService = ApiService ()
     let parseService = ParserService () //xmlserializator, xml data provider
     let coreDataService = CoreDataService () // datastorage datapersistent
-    
-    
+    let spinner = ProgressSpin()
+
     var rssListMOC = [NSManagedObject]()
-    var activityView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
-    var loadingView: UIView = UIView()
 
     
-    
-    
     override func viewDidLoad() {
-        
+ 
         self.rssTableView.dataSource = self
         self.rssTableView.delegate = self
-        
+
         prepareScreenUI()
-        showActivityIndicator()
+        spinner.showActivityIndicator(self.view)
         getPersistentData()
         
         
@@ -55,16 +49,14 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
         //        }
         
         
-        //        parseService.rssFeedService(url) {[weak self] text in
         parseService.rssFeedService() {[weak self] in
             self?.getPersistentData()
             dispatch_async(dispatch_get_main_queue()) {
                 self?.rssTableView.reloadData()
-                self?.hideActivityIndicator()
+                self?.spinner.hideActivityIndicator()
+//                self?.hideActivityIndicator()
             }
         }
-
-
     }
     
     
@@ -126,41 +118,40 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
             itemCell.itemShortContent.text = rssDescriptionText
         }
         itemCell.itemDateLabel.text = (((rssListMOC[indexPath.row].valueForKey("rssPubDate")) as? String)!)
-        
 
-        
         return itemCell
     }
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        let itemURL = rssListMOC[indexPath.row].valueForKey("rssLink") as! String
         
-                coreDataService.deleteItem(indexPath.row){[weak self] rssList in
-                    print("AFTER DELETING = \(rssList.count)")
-                    
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self?.getPersistentData()
-                        self?.rssTableView.reloadData()
+        guard rssListMOC[indexPath.row].valueForKey("rssImage") == nil else {
+            self.spinner.hideActivityIndicator()
+            return self.performSegueWithIdentifier("showItemDetails", sender: indexPath)
+        }
         
-                    }
-                }
+        apiService.getImageURL(itemURL) { [weak self] imageURL in
+            self?.coreDataService.saveImageToRSSItem(indexPath.row, imageURL: imageURL as String)
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                self?.performSegueWithIdentifier("showItemDetails", sender: indexPath)
+            }
+        }
         
-//        let itemURL = rssListCont[indexPath.row].valueForKey("rssLink") as! String
-//        
-//        guard rssListCont[indexPath.row].valueForKey("rssImage") == nil else {
-//            hideActivityIndicator()
-//            return self.performSegueWithIdentifier("showItemDetails", sender: indexPath)
-//        }
-//        
-//        apiService.getImageURL(itemURL) { [weak self] imageURL in
-//            self?.coreDataService.saveImageToRSSItem(indexPath.row, imageURL: imageURL as String)
-//            
-//            dispatch_async(dispatch_get_main_queue()) {
-//                self?.performSegueWithIdentifier("showItemDetails", sender: indexPath)
-//            }
-//        }
-        
+/* Uncoment to use "delete item" functionality when row selected. Upper block-code with performSegueWithIdentifier have to be commented */
+
+//                coreDataService.deleteItem(indexPath.row){[weak self] rssList in
+//                    print("AFTER DELETING = \(rssList.count)")
+//
+//                    dispatch_async(dispatch_get_main_queue()) {
+//                        self?.getPersistentData()
+//                        self?.rssTableView.reloadData()
+//
+//                    }
+//                }
+  
     }
     
     
@@ -185,37 +176,7 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
         rssListMOC = coreDataService.fetchRSSItems()
         print(rssListMOC.count)
     }
-
-    
-    func showActivityIndicator() {
-        dispatch_async(dispatch_get_main_queue()) {
-            
-            self.loadingView = UIView()
-            self.loadingView.frame = CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0)
-            self.loadingView.center = self.view.center
-            self.loadingView.backgroundColor = UIColor.blackColor()
-            self.loadingView.alpha = 0.7
-            self.loadingView.clipsToBounds = true
-            self.loadingView.layer.cornerRadius = 10
-            
-            self.activityView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
-            self.activityView.frame = CGRect(x: 0.0, y: 0.0, width: 80.0, height: 80.0)
-            self.activityView.center = CGPoint(x:self.loadingView.bounds.size.width / 2, y:self.loadingView.bounds.size.height / 2)
-            
-            self.loadingView.addSubview(self.activityView)
-            self.view.addSubview(self.loadingView)
-            self.activityView.startAnimating()
-        }
-    }
-    
-    func hideActivityIndicator() {
-        dispatch_async(dispatch_get_main_queue()) {
-            
-            self.activityView.stopAnimating()
-            self.loadingView.removeFromSuperview()
-        }
-    }
-    
+ 
     
 }
 
