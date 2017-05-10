@@ -34,7 +34,6 @@ class CoreDataService {
 /* Iteration throw rssEntities from ParseService result and comparing with [NSManagedObject] for duplicate >> then save to CD */
         var count = 0
         for rssItem in rssEntities {
-//            let itemId = formatItemId(rssItem)
             
             print(count++)
             checkForExistInStorage (rssItem, rssCheckList: rssCheckList) { [weak self] (itemExist, rssItem) in
@@ -123,57 +122,7 @@ class CoreDataService {
         }
         return array1.sort() == array2.sort()
     }
-    
-    
-    
-    
-    func formatItemId(rssItem: [String: String]) -> String {
-    
 
-        let rssItemLink = rssItem["link"]
-        
-        let dateStartIndex = rssItemLink?.startIndex.advancedBy(37)
-        let date = rssItemLink?.substringFromIndex(dateStartIndex!)
-//        let dateEndIndex = date?.endIndex.advancedBy(-5)
-//        let monthDay = date?.substringToIndex(dateEndIndex!)
-        let monthDay = date?.substringToIndex((date?.endIndex.advancedBy(-5))!)
-        
-        let yearStartIndex = rssItemLink?.startIndex.advancedBy(41)
-        var year = rssItemLink?.substringFromIndex(yearStartIndex!)
-        year?.removeAtIndex((year?.endIndex.advancedBy(-1))!)
-        
-//        let endInd = yearString?.endIndex.advancedBy(-1)
-//        let yearString = yearString?.substringToIndex(endInd!)
-        
-        print(year)
-        
-        let itemIdByDate = year! + monthDay!
-        
-        print(itemIdByDate)
-        
-        return itemIdByDate
-        
-        
-//        let itemIdFromLink = substr?.insert("a", atIndex: 0)
-        
-        
-        
-//        let imageStartSubStr = "?id="
-//        let imageEndSubStr = "a"
-//        let startIndex = str?.rangeOfString(imageStartSubStr).location
-//        
-//        
-//       let str1 = str?.substringFromIndex(10)
-//        
-//        
-//        let imageStartSubStr = "article-image center\" src=\""
-//        let imageEndSubStr = " width="
-//        let startIndex = jsonString.rangeOfString(imageStartSubStr).location.advancedBy(27)
-//        let partImageURL : NSString = (jsonString.substringFromIndex(startIndex))
-//        let endIndex = partImageURL.rangeOfString(imageEndSubStr).location
-        
-    }
-    
     
     
     

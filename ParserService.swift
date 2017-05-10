@@ -128,24 +128,7 @@ class  ParserService : NSObject, NSXMLParserDelegate {
             let itemId = formatItemId(self.rssItem.rssItemDictionary["link"]!)
             self.rssItem.rssItemDictionary["id"] = itemId
             
-//            rssItemsArray.append(self.rssItem.rssItemDictionary)
             self.rssItem.rssItemsArray.append(self.rssItem.rssItemDictionary)
-
-//            self.rssItem.rssItemsArray.sortInPlace() { $0."id" < $1."id" }
-            
-//            for (k,v) in (self.rssItem.rssItemsArray.sorted {$0.0.1 < $1.1.1}) {
-//                println("\(k):\(v)")
-//            }
-            
-//            for (k,v) in (self.rssItem.rssItemsArray.sorted {$0.["id"] < $1.["id"]}) {
-//                println("\(k):\(v)")
-//            }
-//
-//            self.rssItem.rssItemsArray.sortInPlace({ ($0.1, $1.1) -> Bool in
-//                print("hello")
-//            })
-            
-            
         }
         
     }
@@ -155,32 +138,7 @@ class  ParserService : NSObject, NSXMLParserDelegate {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             
             print("PARSE END = \(self.rssItem.rssItemsArray.count)")
-            
-//            for (k, v) in (self.rssItem.rssItemsArray.sorted {$0["id"] < $1["id"]}) {
-//                //                println("\(k):\(v)")
-//
-//            }
-            
-            
-//            self.rssItem.rssItemsArray = self.rssItemsArray.sort() {
-//                $0["id"] < $1["id"]
-//            }
-            
-//            print(self.rssItemsArray)
-            self.rssItem.rssItemsArray.sortInPlace({ $0.0["id"]! > $0.1["id"]! })
-//            print("-------------------------------")
-//            print(self.rssItemsArray)
-            print(self.rssItem.rssItemsArray)
 
-//            self.rssItem.rssItemsArray = self.rssItemsArray
-            
-            
-//            for item in self.rssItem.rssItemsArray {
-//                print(item["pubDate"]!)
-//
-//                
-//            }
-            
         })
     }
     
@@ -196,7 +154,11 @@ class  ParserService : NSObject, NSXMLParserDelegate {
         year.removeAtIndex(year.endIndex.advancedBy(-1))
 
         let itemIdByDate = year + monthDay
-
+        
+/*Fixing not correct ID in rssFeed https://developer.apple.com/news/?id=060142016a */
+        if itemIdByDate == "4201606014" {
+            return "20160614"
+        }
         return itemIdByDate
     }
 
