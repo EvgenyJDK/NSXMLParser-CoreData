@@ -18,7 +18,7 @@ class  ParserService : NSObject, NSXMLParserDelegate {
     var rssDescription: String!
     var rssPubDate: String!
     var parsedItem:String! = String()
-    var itemDictionary: [String: String]! = Dictionary()
+    var itemDictionary: [String: AnyObject]! = Dictionary()
     var rssItemsArray: [[String: String]] = Array()
     
     var rssItem = RSSItem()
@@ -103,6 +103,16 @@ class  ParserService : NSObject, NSXMLParserDelegate {
         if parsedItem == "pubDate"{
             rssPubDate = rssPubDate + string
             self.rssItem.rssPubDate = rssPubDate + string
+            
+//                        print("RSSPUBDATE = \(rssPubDate)")
+////                        let str = "Thu, 20 Apr 2017 11:00:00 PDT"
+////                        var dateString = "2014-07-15" // change to your date format yyyy-MM-dd
+//                        let dateFormatter = NSDateFormatter()
+//                        dateFormatter.dateFormat = "EEE, dd LLL yyyy HH:mm:ss z"
+//                        let date = dateFormatter.dateFromString(rssPubDate)
+//                        print("DATE = \(date)")
+            
+            
         }
     }
     
@@ -124,9 +134,15 @@ class  ParserService : NSObject, NSXMLParserDelegate {
         if elementName == "pubDate"{
             itemDictionary["pubDate"] = rssPubDate
             self.rssItem.rssItemDictionary["pubDate"] = rssPubDate
-
-            let itemId = formatItemId(self.rssItem.rssItemDictionary["link"]!)
-            self.rssItem.rssItemDictionary["id"] = itemId
+            
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "EEE, dd LLL yyyy HH:mm:ss z"
+            let pubDate = dateFormatter.dateFromString(rssPubDate)
+            self.rssItem.rssItemDictionary["dateID"] = pubDate
+            
+            
+//            let itemId = formatItemId(self.rssItem.rssItemDictionary["link"]! as! String)
+//            self.rssItem.rssItemDictionary["id"] = itemId
             
             self.rssItem.rssItemsArray.append(self.rssItem.rssItemDictionary)
         }

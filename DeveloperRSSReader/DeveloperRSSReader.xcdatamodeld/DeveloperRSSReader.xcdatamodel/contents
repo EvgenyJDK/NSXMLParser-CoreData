@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Automatic">
     <entity name="RSSItem" syncable="YES">
+        <attribute name="rssDateID" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="rssDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rssID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rssImage" optional="YES" attributeType="Binary" syncable="YES"/>
@@ -9,6 +10,6 @@
         <attribute name="rssTitle" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="RSSItem" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="RSSItem" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

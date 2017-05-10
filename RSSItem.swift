@@ -15,10 +15,11 @@ struct  RSSItem {
     var title : String = ""
     var link : String = ""
     var description : String = ""
-    var rssItemDictionary: [String:String]! = Dictionary()
-    var rssItemsArray:[[String:String]]! = Array()
+    var rssItemDictionary: [String:AnyObject]! = Dictionary()
+    var rssItemsArray:[[String:AnyObject]]! = Array()
     var rssPubDate : String!
    
+//    var rssDateID : NSDate?
     var image: NSData!
 
     
