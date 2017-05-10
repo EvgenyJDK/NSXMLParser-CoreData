@@ -48,7 +48,6 @@ class CoreDataService {
                     let entity = NSEntityDescription.entityForName("RSSItem", inManagedObjectContext: self!.managedContext)
                     let item = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self!.managedContext)
                     
-//                    item.setValue(rssItem["id"], forKey: "rssID")
                     item.setValue(rssItem["dateID"], forKey: "rssDateID")
                     item.setValue(rssItem["title"], forKey: "rssTitle")
                     item.setValue(rssItem["link"], forKey: "rssLink")
@@ -153,17 +152,10 @@ class CoreDataService {
         do {
             let results = try managedContext.executeFetchRequest(fetchRequest)
             rssListMOC = results as! [NSManagedObject]
-//            rssListMOC.sortInPlace({ $0.0.valueForKey("rssDateID") as? String > $0.1.valueForKey("rssDateID") as? String })
-            
             rssListMOC.sortInPlace {
                 ($0.0.valueForKey("rssDateID") as? NSDate) > ($0.1.valueForKey("rssDateID") as? NSDate)
             }
-            
-//            let dateFormatter = NSDateFormatter()
-//            dateFormatter.dateFormat = "EEE, dd LLL yyyy HH:mm:ss z"
-//            let date = dateFormatter.dateFromString(rssPubDate)
-            
-//            rssListMOC.sortInPlace({ $0.0.valueForKey("rssID") as? String > $0.1.valueForKey("rssID") as? String })
+
             
 /* http://stackoverflow.com/questions/29455824/sort-array-of-dictionaries-by-nsdates-within-the-dictionaries */
             

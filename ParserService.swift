@@ -12,7 +12,6 @@ import UIKit
 class  ParserService : NSObject, NSXMLParserDelegate {
     
     var xmlParser: NSXMLParser!
-    var rssItemId: String!
     var rssTitle: String!
     var rssLink: String!
     var rssDescription: String!
@@ -27,7 +26,6 @@ class  ParserService : NSObject, NSXMLParserDelegate {
 
     func rssFeedService(callback: () -> Void) {
         
-        
         parseFeed(GlobalConstants.rssFeedURL) { () in
             self.coreDataService.saveRSSItems(self.rssItem.rssItemsArray)
             callback()
@@ -35,16 +33,6 @@ class  ParserService : NSObject, NSXMLParserDelegate {
         
     }
 
-  
-//    func rssFeedService(url: String, callback: () -> Void) {
-//        
-//        parseFeed(url) { () in
-//            self.coreDataService.saveRSSItems(self.rssItem.rssItemsArray)
-//            callback()
-//         }
-//        
-//    }
-    
     
     func parseFeed(url: String, callback: () -> Void) {
 
@@ -103,16 +91,6 @@ class  ParserService : NSObject, NSXMLParserDelegate {
         if parsedItem == "pubDate"{
             rssPubDate = rssPubDate + string
             self.rssItem.rssPubDate = rssPubDate + string
-            
-//                        print("RSSPUBDATE = \(rssPubDate)")
-////                        let str = "Thu, 20 Apr 2017 11:00:00 PDT"
-////                        var dateString = "2014-07-15" // change to your date format yyyy-MM-dd
-//                        let dateFormatter = NSDateFormatter()
-//                        dateFormatter.dateFormat = "EEE, dd LLL yyyy HH:mm:ss z"
-//                        let date = dateFormatter.dateFromString(rssPubDate)
-//                        print("DATE = \(date)")
-            
-            
         }
     }
     
@@ -139,11 +117,7 @@ class  ParserService : NSObject, NSXMLParserDelegate {
             dateFormatter.dateFormat = "EEE, dd LLL yyyy HH:mm:ss z"
             let pubDate = dateFormatter.dateFromString(rssPubDate)
             self.rssItem.rssItemDictionary["dateID"] = pubDate
-            
-            
-//            let itemId = formatItemId(self.rssItem.rssItemDictionary["link"]! as! String)
-//            self.rssItem.rssItemDictionary["id"] = itemId
-            
+
             self.rssItem.rssItemsArray.append(self.rssItem.rssItemDictionary)
         }
         
@@ -157,28 +131,5 @@ class  ParserService : NSObject, NSXMLParserDelegate {
 
         })
     }
-    
-    
-    
-    func formatItemId(rssLink: String) -> String {
-        
-        let dateStartIndex = rssLink.startIndex.advancedBy(37)
-        let date = rssLink.substringFromIndex(dateStartIndex)
-        let monthDay = date.substringToIndex(date.endIndex.advancedBy(-5))
-        let yearStartIndex = rssLink.startIndex.advancedBy(41)
-        var year = rssLink.substringFromIndex(yearStartIndex)
-        year.removeAtIndex(year.endIndex.advancedBy(-1))
-
-        let itemIdByDate = year + monthDay
-        
-/*Fixing not correct ID in rssFeed https://developer.apple.com/news/?id=060142016a */
-        if itemIdByDate == "4201606014" {
-            return "20160614"
-        }
-        return itemIdByDate
-    }
-
-    
-    
 }
 
