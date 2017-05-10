@@ -20,26 +20,15 @@ class CoreDataService {
     func saveRSSItems (rssEntities : [[String:AnyObject]]) {
         let rssCheckList = self.fetchRSSItems()
 
-        
-        
-//        for title in rssEntities {
-//            containSameElements(title, rssCheckList)
-//        }
-        
-        
         print("COREDATA ITEMS TO SAVE = \(rssEntities.count)")
         print("COREDATA ITEMS = \(rssCheckList.count)")
 
 /* Iteration throw rssEntities from ParseService result and comparing with [NSManagedObject] for duplicate >> then save to CD */
-        var count = 0
+
         for rssItem in rssEntities {
-            
-            print(count++)
+
             checkForExistInStorage (rssItem, rssCheckList: rssCheckList) { [weak self] (itemExist, rssItem) in
-                
-                print(rssItem["title"])
-                print(rssItem["id"])
-                
+
                 if (itemExist) {
                     print("Such Item Already exists")
                 } else {
@@ -56,7 +45,6 @@ class CoreDataService {
                     do {
                         try self!.managedContext.save()
                     self?.rssListMOC.append(item)
-//                        self!.rssList.insert(item, atIndex: 0)
                         print("saved to CD")
                     }
                     catch {
@@ -70,68 +58,30 @@ class CoreDataService {
     
 /* http://stackoverflow.com/questions/39161168/how-to-compare-two-array-of-objects */
     
-    func checkForExistInStorage (rssItem: [String: AnyObject], rssCheckList: [NSManagedObject], callback: (Bool, [String: AnyObject])->()) -> Void {
+    func checkForExistInStorage (rssItem: [String: AnyObject], rssCheckList: [NSManagedObject], callback: (Bool, [String: AnyObject])->()) {
         
         guard rssCheckList.count != 0 else {
-            print(rssItem["title"])
             return callback(false, rssItem)
         }
         
-        
-        print("rssCheckList.COUNT = \(rssCheckList.count)")
-//        var ifExist = false
-        var count = 1
-        for itemToCompare in rssCheckList {
-            print("COUNT = \(count)")
-            print("CHECKING = \(rssItem["title"])")
-            
-            
-            if rssItem["title"] as? String == (itemToCompare.valueForKey("rssTitle") as? String) {
+        for i in 0...rssCheckList.count-1 {
+            if rssItem["title"] as? String == (rssCheckList[i].valueForKey("rssTitle") as? String) {
                 callback(true, rssItem)
                 break
             }
-            else if rssCheckList.count == count {
+            else if i == rssCheckList.count-1 {
                 callback(false, rssItem)
             }
-            
-
-//            if rssCheckList.count == count {
-//                callback(false, rssItem)
-//            }
-            count += 1
         }
-        
-//         for (var i=1..<10) {
-//            print("hello")
-//        }
-//        
-//        for (var i=1; i<10; i++) {
-//            
-//        }
-        
-        print("FOR END")
-
     }
     
-    
-    
-    func containSameElements<T: Comparable>(array1: [T], _ array2: [T]) -> Bool {
-        guard array1.count == array2.count else {
-            return false // No need to sorting if they already have different counts
-        }
-        return array1.sort() == array2.sort()
-    }
 
-    
-    
-    
     
     func saveImageToRSSItem (itemIndex: Int, imageURL: String) -> NSManagedObject {
     
         let urlString  = NSURL(string: imageURL)
         if let data = NSData(contentsOfURL: urlString!) {
             self.rssListMOC[itemIndex].setValue(data, forKey: "rssImage")
-            
             do {
                 try managedContext.save()
                 print("saved Item Image to CD")
@@ -148,7 +98,6 @@ class CoreDataService {
     func fetchRSSItems () -> [NSManagedObject] {
         
         let fetchRequest = NSFetchRequest(entityName: "RSSItem")
-        
         do {
             let results = try managedContext.executeFetchRequest(fetchRequest)
             rssListMOC = results as! [NSManagedObject]
@@ -175,8 +124,6 @@ class CoreDataService {
     
     func deleteItem (itemIndex: Int, callback: [NSManagedObject] ->()) {
         
-        print(itemIndex)
-        
         do {
             try managedContext.deleteObject(rssListMOC[itemIndex])
             rssListMOC.removeAtIndex(itemIndex)
@@ -186,11 +133,7 @@ class CoreDataService {
         catch {
             print("Error! Can't delete from CD")
         }
-
-       
-
     }
-    
 }
 
 
