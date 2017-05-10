@@ -31,32 +31,31 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
         prepareScreenUI()
         spinner.showActivityIndicator(self.view)
         getPersistentData()
+        setPersistentData()
         
-        
-        /* If there is no items in CD (1st app launch) >> make rss feed parsing */
-        //        guard rssListCont.count == 0 else {
-        //            parseService.rssFeedService({
-        //                [weak self] in
-        //                self?.getPersistentData()
-        //                dispatch_async(dispatch_get_main_queue()) {
-        //                    self?.rssTableView.reloadData()
-        //                    self?.hideActivityIndicator()
-        //                }
-        //
-        //            })
-        //            self.hideActivityIndicator()
-        //            return self.rssTableView.reloadData()
-        //        }
-        
-        
-        parseService.rssFeedService() {[weak self] in
-            self?.getPersistentData()
-            dispatch_async(dispatch_get_main_queue()) {
-                self?.rssTableView.reloadData()
-                self?.spinner.hideActivityIndicator()
-//                self?.hideActivityIndicator()
-            }
-        }
+///* If there is no items in CD (1st app launch) >> make rss feed parsing */
+//        guard rssListMOC.count == 0 else {
+//            parseService.rssFeedService({
+//                [weak self] in
+//                self?.getPersistentData()
+//                dispatch_async(dispatch_get_main_queue()) {
+//                    self?.rssTableView.reloadData()
+//                    self!.spinner.hideActivityIndicator()
+//                }
+//                
+//                })
+//            spinner.hideActivityIndicator()
+//            return self.rssTableView.reloadData()
+//        }
+//        
+//        
+//        parseService.rssFeedService() {[weak self] in
+//            self?.getPersistentData()
+//            dispatch_async(dispatch_get_main_queue()) {
+//                self?.rssTableView.reloadData()
+//                self?.spinner.hideActivityIndicator()
+//            }
+//        }
     }
     
     
@@ -141,17 +140,17 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
 /* Uncoment to use "delete item" functionality when row selected. Upper block-code with performSegueWithIdentifier have to be commented */
-
-//                coreDataService.deleteItem(indexPath.row){[weak self] rssList in
-//                    print("AFTER DELETING = \(rssList.count)")
 //
-//                    dispatch_async(dispatch_get_main_queue()) {
-//                        self?.getPersistentData()
-//                        self?.rssTableView.reloadData()
-//
-//                    }
-//                }
-  
+//        coreDataService.deleteItem(indexPath.row){[weak self] rssList in
+//            print("AFTER DELETING = \(rssList.count)")
+//            
+//            dispatch_async(dispatch_get_main_queue()) {
+//                self?.getPersistentData()
+//                self?.rssTableView.reloadData()
+//                
+//            }
+//        }
+        
     }
     
     
@@ -177,6 +176,32 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
         print(rssListMOC.count)
     }
  
+    func setPersistentData() {
+        
+/* If there is no items in CD (1st app launch) >> make rss feed parsing */
+//        guard rssListMOC.count == 0 else {
+//            parseService.rssFeedService({
+//                [weak self] in
+//                self?.getPersistentData()
+//                dispatch_async(dispatch_get_main_queue()) {
+//                    self?.rssTableView.reloadData()
+//                    self!.spinner.hideActivityIndicator()
+//                }
+//                })
+//            spinner.hideActivityIndicator()
+//            return self.rssTableView.reloadData()
+//        }
+        
+        parseService.rssFeedService() {[weak self] in
+            self?.getPersistentData()
+            dispatch_async(dispatch_get_main_queue()) {
+                self?.rssTableView.reloadData()
+                self?.spinner.hideActivityIndicator()
+            }
+        }
+        
+    }
+    
     
 }
 

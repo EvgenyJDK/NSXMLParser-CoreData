@@ -129,15 +129,16 @@ class CoreDataService {
     func saveImageToRSSItem (itemIndex: Int, imageURL: String) -> NSManagedObject {
     
         let urlString  = NSURL(string: imageURL)
-        let data = NSData(contentsOfURL: urlString!)
-        self.rssListMOC[itemIndex].setValue(data, forKey: "rssImage")
-        
-        do {
-            try managedContext.save()
-            print("saved Item Image to CD")
-        }
-        catch {
-            print("Error! Can't save to CD")
+        if let data = NSData(contentsOfURL: urlString!) {
+            self.rssListMOC[itemIndex].setValue(data, forKey: "rssImage")
+            
+            do {
+                try managedContext.save()
+                print("saved Item Image to CD")
+            }
+            catch {
+                print("Error! Can't save to CD")
+            }
         }
         return rssListMOC[itemIndex]
     }

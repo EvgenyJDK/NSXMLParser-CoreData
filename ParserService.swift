@@ -42,10 +42,12 @@ class  ParserService : NSObject, NSXMLParserDelegate {
         NSURLConnection.sendAsynchronousRequest(rssUrlRequest, queue: queue) {
             (response, data, error) -> Void in
             
-            self.xmlParser = NSXMLParser(data: data!)
-            self.xmlParser.delegate = self
-            self.xmlParser.parse()
-            
+            if let dataToParse = data {
+                self.xmlParser = NSXMLParser(data: dataToParse)
+                self.xmlParser.delegate = self
+                self.xmlParser.parse()
+            }
+
             callback()
         }
     }
