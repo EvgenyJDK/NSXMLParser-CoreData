@@ -28,34 +28,11 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
         self.rssTableView.dataSource = self
         self.rssTableView.delegate = self
 
+        getPersistentData()
         prepareScreenUI()
         spinner.showActivityIndicator(self.view)
-        getPersistentData()
         setPersistentData()
         
-///* If there is no items in CD (1st app launch) >> make rss feed parsing */
-//        guard rssListMOC.count == 0 else {
-//            parseService.rssFeedService({
-//                [weak self] in
-//                self?.getPersistentData()
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    self?.rssTableView.reloadData()
-//                    self!.spinner.hideActivityIndicator()
-//                }
-//                
-//                })
-//            spinner.hideActivityIndicator()
-//            return self.rssTableView.reloadData()
-//        }
-//        
-//        
-//        parseService.rssFeedService() {[weak self] in
-//            self?.getPersistentData()
-//            dispatch_async(dispatch_get_main_queue()) {
-//                self?.rssTableView.reloadData()
-//                self?.spinner.hideActivityIndicator()
-//            }
-//        }
     }
     
     
@@ -67,6 +44,11 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
         
         //        self.rssTableView.separatorColor = UIColor.redColor()
         //        self.rssTableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
+        let currentDate = rssListMOC[0].valueForKey("rssPubDate") as? String
+        let index = currentDate?.startIndex.advancedBy(11)
+        currentDateLabel.text = currentDate?.substringToIndex(index!)
+
     }
 
     
@@ -174,7 +156,8 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
         rssListMOC = coreDataService.fetchRSSItems()
         print("getPersistentData = \(rssListMOC.count)")
     }
- 
+    
+    
     func setPersistentData() {
         
 /* If there is no items in CD (1st app launch) >> make rss feed parsing */

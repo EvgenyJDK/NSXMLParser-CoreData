@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoreDataService.swift"
-            timestampString = "516142576.953527"
+            timestampString = "516144058.120416"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "fetchRSSItems()"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoreDataService.swift"
-            timestampString = "516142576.953527"
+            timestampString = "516144058.120416"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "saveImageToRSSItem(_:imageURL:)"
             landmarkType = "5">
          </BreakpointContent>
