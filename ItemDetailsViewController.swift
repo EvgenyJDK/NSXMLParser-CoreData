@@ -64,8 +64,10 @@ class ItemDetailsViewController: UIViewController, UIScrollViewDelegate {
 //        frame.size.height = contentSize.height
 //        self.itemDescription.frame = frame
 //        
-        let aspectRatioTextViewConstraint = NSLayoutConstraint(item: self.itemDescription, attribute: .Height, relatedBy: .Equal, toItem: self.itemDescription, attribute: .Width, multiplier: self.itemDescription.bounds.height/self.itemDescription.bounds.width, constant: 1)
-        self.itemDescription.addConstraint(aspectRatioTextViewConstraint)
+        
+        
+//        let aspectRatioTextViewConstraint = NSLayoutConstraint(item: self.itemDescription, attribute: .Height, relatedBy: .Equal, toItem: self.itemDescription, attribute: .Width, multiplier: self.itemDescription.bounds.height/self.itemDescription.bounds.width, constant: 1)
+//        self.itemDescription.addConstraint(aspectRatioTextViewConstraint)
         
     }
     

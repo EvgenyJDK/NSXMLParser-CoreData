@@ -66,13 +66,16 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let itemCell = tableView.dequeueReusableCellWithIdentifier("RSSCell") as! RSSTableViewCell
 
+        itemCell.setCellUI()
+        itemCell.setRSSFeedData(rssListMOC[indexPath.row])
 //        let bottomBorder = CALayer()
 //        bottomBorder.backgroundColor = GlobalConstants.backgroundColor.CGColor
 //        bottomBorder.frame = CGRectMake(0, itemCell.frame.size.height - 1, itemCell.frame.size.width, 1)
 //        itemCell.layer.addSublayer(bottomBorder)
         
 /* http://stackoverflow.com/questions/34454924/set-tableview-cell-corner-radius-swift-2-0 */
-        
+
+/*
         itemCell.layer.cornerRadius = 5
         itemCell.layer.borderColor = GlobalConstants.backgroundColor.CGColor
         itemCell.layer.borderWidth = 3 
@@ -87,7 +90,8 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
             itemCell.itemShortContent.text = rssDescriptionText
         }
         itemCell.itemDateLabel.text = (((rssListMOC[indexPath.row].valueForKey("rssPubDate")) as? String)!)
-
+*/
+        
         return itemCell
     }
     
