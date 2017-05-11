@@ -24,6 +24,7 @@ class ItemDetailsViewController: UIViewController, UIScrollViewDelegate {
 
         prepareScreenUI()
    
+        
     }
 
     
@@ -32,10 +33,18 @@ class ItemDetailsViewController: UIViewController, UIScrollViewDelegate {
         self.navigationItem.title = "Apple News"
         navigationController?.navigationBar.barTintColor = GlobalConstants.backgroundColor
         
+        self.view.layer.borderWidth = 5
+        self.view.layer.borderColor = GlobalConstants.backgroundColor.CGColor
+        
+        
 //        itemScrollView.backgroundColor = GlobalConstants.backgroundColor
 //        itemScrollView.layer.masksToBounds = true
 //        itemScrollView.layer.borderColor = (GlobalConstants.backgroundColor).CGColor
 //        itemScrollView.layer.borderWidth = 5.0
+        
+//        CGRect frame = itemDescription.frame;
+//        frame.size.height = _textView.contentSize.height;
+//        _textView.frame = frame;
         
         
         itemTitle.text = self.rssItemDetails!.title
@@ -44,6 +53,24 @@ class ItemDetailsViewController: UIViewController, UIScrollViewDelegate {
 
         settingImageToItemDescription()
     }
+    
+    
+    override func viewDidLayoutSubviews() {
+        
+        super.viewDidLayoutSubviews()
+        
+//        let contentSize = self.itemDescription.sizeThatFits(self.itemDescription.bounds.size)
+//        var frame = self.itemDescription.frame
+//        frame.size.height = contentSize.height
+//        self.itemDescription.frame = frame
+//        
+        let aspectRatioTextViewConstraint = NSLayoutConstraint(item: self.itemDescription, attribute: .Height, relatedBy: .Equal, toItem: self.itemDescription, attribute: .Width, multiplier: self.itemDescription.bounds.height/self.itemDescription.bounds.width, constant: 1)
+        self.itemDescription.addConstraint(aspectRatioTextViewConstraint)
+        
+    }
+    
+    
+    
     
     
     
