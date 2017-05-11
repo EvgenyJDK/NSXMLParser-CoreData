@@ -64,15 +64,15 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ns4-QX-O5S">
-                                                    <rect key="frame" x="158" y="97" width="401" height="21"/>
+                                                    <rect key="frame" x="108" y="97" width="481" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="ns4-QX-O5S" firstAttribute="trailing" secondItem="nCG-eN-fGn" secondAttribute="trailingMargin" constant="30" id="2CZ-JM-HcW"/>
                                                 <constraint firstItem="xIl-6d-2ez" firstAttribute="leading" secondItem="nCG-eN-fGn" secondAttribute="leadingMargin" id="8ht-Pb-8Gd"/>
-                                                <constraint firstItem="ns4-QX-O5S" firstAttribute="leading" secondItem="nCG-eN-fGn" secondAttribute="leadingMargin" constant="150" id="Bgy-AK-l08"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="ns4-QX-O5S" secondAttribute="bottom" id="JbI-6F-KwU"/>
                                                 <constraint firstItem="xIl-6d-2ez" firstAttribute="top" secondItem="nCG-eN-fGn" secondAttribute="topMargin" id="PEY-hg-UDC"/>
                                                 <constraint firstItem="vv1-WF-vfI" firstAttribute="top" secondItem="xIl-6d-2ez" secondAttribute="bottom" constant="3" id="SMi-No-q62"/>

@@ -28,7 +28,6 @@ struct RSSItemDetails {
         if let imageData = object.valueForKey("rssImage") as? NSData {
             self.image = imageData
         }
-   
     }
    
 }

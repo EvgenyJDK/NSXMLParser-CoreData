@@ -30,7 +30,6 @@ class  ParserService : NSObject, NSXMLParserDelegate {
             self.coreDataService.saveRSSItems(self.rssItem.rssItemsArray)
             callback()
         }
-        
     }
 
     
@@ -47,7 +46,6 @@ class  ParserService : NSObject, NSXMLParserDelegate {
                 self.xmlParser.delegate = self
                 self.xmlParser.parse()
             }
-
             callback()
         }
     }
@@ -122,14 +120,11 @@ class  ParserService : NSObject, NSXMLParserDelegate {
 
             self.rssItem.rssItemsArray.append(self.rssItem.rssItemDictionary)
         }
-        
     }
     
     
     func parserDidEndDocument(parser: NSXMLParser){
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            
-            print("PARSE END = \(self.rssItem.rssItemsArray.count)")
 
         })
     }

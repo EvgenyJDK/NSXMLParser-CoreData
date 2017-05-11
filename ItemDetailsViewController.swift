@@ -23,8 +23,8 @@ class ItemDetailsViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
 
         prepareScreenUI()
-   
-        
+        setItemDetails()
+        setImageToItemDescription()
     }
 
     
@@ -32,51 +32,22 @@ class ItemDetailsViewController: UIViewController, UIScrollViewDelegate {
         
         self.navigationItem.title = "Apple News"
         navigationController?.navigationBar.barTintColor = GlobalConstants.backgroundColor
-        
         self.view.layer.borderWidth = 5
         self.view.layer.borderColor = GlobalConstants.backgroundColor.CGColor
-        
-        
-//        itemScrollView.backgroundColor = GlobalConstants.backgroundColor
-//        itemScrollView.layer.masksToBounds = true
-//        itemScrollView.layer.borderColor = (GlobalConstants.backgroundColor).CGColor
-//        itemScrollView.layer.borderWidth = 5.0
-        
-//        CGRect frame = itemDescription.frame;
-//        frame.size.height = _textView.contentSize.height;
-//        _textView.frame = frame;
-        
+    }
+    
+    
+    
+    func setItemDetails() {
         
         itemTitle.text = self.rssItemDetails!.title
         itemPubDate.text = self.rssItemDetails!.rssPubDate
         itemDescription.text = self.rssItemDetails!.description
-
-        settingImageToItemDescription()
-    }
-    
-    
-    override func viewDidLayoutSubviews() {
-        
-        super.viewDidLayoutSubviews()
-        
-//        let contentSize = self.itemDescription.sizeThatFits(self.itemDescription.bounds.size)
-//        var frame = self.itemDescription.frame
-//        frame.size.height = contentSize.height
-//        self.itemDescription.frame = frame
-//        
-        
-        
-//        let aspectRatioTextViewConstraint = NSLayoutConstraint(item: self.itemDescription, attribute: .Height, relatedBy: .Equal, toItem: self.itemDescription, attribute: .Width, multiplier: self.itemDescription.bounds.height/self.itemDescription.bounds.width, constant: 1)
-//        self.itemDescription.addConstraint(aspectRatioTextViewConstraint)
-        
     }
     
     
     
-    
-    
-    
-    func settingImageToItemDescription() {
+    func setImageToItemDescription() {
         
         var itemImg = UIImageView()
         if let data = self.rssItemDetails!.image {
@@ -88,8 +59,6 @@ class ItemDetailsViewController: UIViewController, UIScrollViewDelegate {
         itemDescription.textContainer.exclusionPaths = [path]
         itemDescription.addSubview(itemImg)
         itemDescription.sizeToFit()
-    
-    
     }
  
 }

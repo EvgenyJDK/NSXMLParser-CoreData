@@ -18,8 +18,6 @@ struct  RSSItem {
     var rssItemDictionary: [String:AnyObject]! = Dictionary()
     var rssItemsArray:[[String:AnyObject]]! = Array()
     var rssPubDate : String!
-   
-//    var rssDateID : NSDate?
     var image: NSData!
 
     

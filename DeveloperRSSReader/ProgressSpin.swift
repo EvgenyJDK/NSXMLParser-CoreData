@@ -32,7 +32,6 @@ struct ProgressSpin {
             view.addSubview(self.loadingView)
             self.activityView.startAnimating()
         }
-        
     }
     
     func hideActivityIndicator() -> Void {

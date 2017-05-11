@@ -17,7 +17,7 @@ class  RSSTableViewCell: UITableViewCell {
     @IBOutlet weak var itemDateLabel: UILabel!
     
     
-    func setCellUI() {
+    func setUI() {
         self.layer.cornerRadius = 5
         self.layer.borderColor = GlobalConstants.backgroundColor.CGColor
         self.layer.borderWidth = 3

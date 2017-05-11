@@ -19,14 +19,8 @@ struct  GlobalConstants {
     static let backgroundColor = UIColor(red:  159/255.0, green: 197/255.0, blue: 232/255.0, alpha: 100.0/100.0)
 
     
-   
     private init () {
+    
     }
  
-    
-    
-    
-/* http://stackoverflow.com/questions/26252233/global-constants-file-in-swift */
-/* http://stackoverflow.com/questions/38585344/swift-constants-struct-or-enum */
-    
 }

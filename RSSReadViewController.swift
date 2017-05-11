@@ -16,8 +16,8 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var rssTableView: UITableView!
     
     let apiService = ApiService ()
-    let parseService = ParserService () //xmlserializator, xml data provider
-    let coreDataService = CoreDataService () // datastorage datapersistent
+    let parseService = ParserService ()
+    let coreDataService = CoreDataService ()
     let spinner = ProgressSpin()
 
     var rssListMOC = [NSManagedObject]()
@@ -28,9 +28,9 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
         self.rssTableView.dataSource = self
         self.rssTableView.delegate = self
 
-        getPersistentData()
         prepareScreenUI()
         printTimestamp()
+        getPersistentData()
         spinner.showActivityIndicator(self.view)
         setPersistentData()
         
@@ -41,9 +41,7 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
         
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         navigationController?.navigationBar.barTintColor = GlobalConstants.backgroundColor
-  
-/* http://stackoverflow.com/questions/30531111/how-do-i-customize-a-uitableview-right-top-and-bottom-border */
-        
+
         rssTableView.backgroundColor = GlobalConstants.backgroundColor
         rssTableView.layer.masksToBounds = true
         rssTableView.layer.borderColor = (GlobalConstants.backgroundColor).CGColor
@@ -56,7 +54,27 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
         currentDateLabel.text = timestamp
     }
     
+    
+    func getPersistentData() {
+        rssListMOC = coreDataService.fetchRSSItems()
+        print("getPersistentData = \(rssListMOC.count)")
+    }
+    
+    
+    func setPersistentData() {
+        
+        parseService.rssFeedService() {[weak self] in
+            self?.getPersistentData()
+            dispatch_async(dispatch_get_main_queue()) {
+                self?.rssTableView.reloadData()
+                self?.spinner.hideActivityIndicator()
+            }
+        }
+    }
 
+    
+    
+// MARK: - TableView Datasource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rssListMOC.count
@@ -65,36 +83,14 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let itemCell = tableView.dequeueReusableCellWithIdentifier("RSSCell") as! RSSTableViewCell
-
-        itemCell.setCellUI()
+        itemCell.setUI()
         itemCell.setRSSFeedData(rssListMOC[indexPath.row])
-//        let bottomBorder = CALayer()
-//        bottomBorder.backgroundColor = GlobalConstants.backgroundColor.CGColor
-//        bottomBorder.frame = CGRectMake(0, itemCell.frame.size.height - 1, itemCell.frame.size.width, 1)
-//        itemCell.layer.addSublayer(bottomBorder)
-        
-/* http://stackoverflow.com/questions/34454924/set-tableview-cell-corner-radius-swift-2-0 */
-
-/*
-        itemCell.layer.cornerRadius = 5
-        itemCell.layer.borderColor = GlobalConstants.backgroundColor.CGColor
-        itemCell.layer.borderWidth = 3 
-
-        itemCell.itemTitle.text = (rssListMOC[indexPath.row].valueForKey("rssTitle")) as? String
-        
-        let rssDescriptionText = ((rssListMOC[indexPath.row].valueForKey("rssDescription")) as! String)
-        if (rssDescriptionText.characters.count > 75) {
-            itemCell.itemShortContent.text = rssDescriptionText.substringToIndex(rssDescriptionText.startIndex.advancedBy(70)) + "..."
-        }
-        else {
-            itemCell.itemShortContent.text = rssDescriptionText
-        }
-        itemCell.itemDateLabel.text = (((rssListMOC[indexPath.row].valueForKey("rssPubDate")) as? String)!)
-*/
         
         return itemCell
     }
     
+
+// MARK: - TableView Delegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -144,37 +140,6 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     
-    func getPersistentData() {
-        rssListMOC = coreDataService.fetchRSSItems()
-        print("getPersistentData = \(rssListMOC.count)")
-    }
-    
-    
-    func setPersistentData() {
-        
-/* If there is no items in CD (1st app launch) >> make rss feed parsing */
-//        guard rssListMOC.count == 0 else {
-//            parseService.rssFeedService({
-//                [weak self] in
-//                self?.getPersistentData()
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    self?.rssTableView.reloadData()
-//                    self!.spinner.hideActivityIndicator()
-//                }
-//                })
-//            spinner.hideActivityIndicator()
-//            return self.rssTableView.reloadData()
-//        }
-        
-        parseService.rssFeedService() {[weak self] in
-            self?.getPersistentData()
-            dispatch_async(dispatch_get_main_queue()) {
-                self?.rssTableView.reloadData()
-                self?.spinner.hideActivityIndicator()
-            }
-        }
-        
-    }
     
     
 }

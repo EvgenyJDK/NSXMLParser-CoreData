@@ -20,8 +20,8 @@ class CoreDataService {
     func saveRSSItems (rssEntities : [[String:AnyObject]]) {
         let rssCheckList = self.fetchRSSItems()
 
-        print("COREDATA ITEMS TO SAVE = \(rssEntities.count)")
-        print("COREDATA ITEMS = \(rssCheckList.count)")
+        print("ITEMS TO SAVE = \(rssEntities.count)")
+        print("ITEMS IN STORAGE = \(rssCheckList.count)")
 
 /* Iteration throw rssEntities from ParseService result and comparing with [NSManagedObject] for duplicate >> then save to CD */
 
@@ -54,9 +54,7 @@ class CoreDataService {
             }
         }
     }
-    
-    
-/* http://stackoverflow.com/questions/39161168/how-to-compare-two-array-of-objects */
+
     
     func checkForExistInStorage (rssItem: [String: AnyObject], rssCheckList: [NSManagedObject], callback: (Bool, [String: AnyObject])->()) {
         
@@ -101,22 +99,14 @@ class CoreDataService {
         do {
             let results = try managedContext.executeFetchRequest(fetchRequest)
             rssListMOC = results as! [NSManagedObject]
+            
+/* Sort [NSManagedObject] by rssDateID (similar PubDate) */
             rssListMOC.sortInPlace {
                 ($0.0.valueForKey("rssDateID") as? NSDate) > ($0.1.valueForKey("rssDateID") as? NSDate)
             }
-
-            
-/* http://stackoverflow.com/questions/29455824/sort-array-of-dictionaries-by-nsdates-within-the-dictionaries */
-            
-            
-/* http://stackoverflow.com/questions/40050495/sort-swift-array-of-dictionaries-by-value */
-/* http://stackoverflow.com/questions/30446812/sort-swift-array-of-dictionaries-by-value-of-a-key */
-/* http://stackoverflow.com/questions/27639993/swift-sort-dictionary-by-value */
-
-            
         }
         catch {
-            print("error fetch")
+            print("fetch error")
         }
         return rssListMOC
     }
@@ -124,17 +114,18 @@ class CoreDataService {
     
     func deleteItem (itemIndex: Int, callback: [NSManagedObject] ->()) {
         
-        do {
-            try managedContext.deleteObject(rssListMOC[itemIndex])
-            rssListMOC.removeAtIndex(itemIndex)
-            print("deleted from CD")
-            callback(rssListMOC)
-        }
-        catch {
-            print("Error! Can't delete from CD")
-        }
+//        do {
+//            try managedContext.deleteObject(rssListMOC[itemIndex])
+//            rssListMOC.removeAtIndex(itemIndex)
+//            print("deleted from CD")
+//            callback(rssListMOC)
+//        }
+//        catch {
+//            print("Error! Can't delete from CD")
+//        }
     }
 }
+
 
 
 extension NSDate: Comparable { }
