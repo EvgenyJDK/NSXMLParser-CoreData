@@ -30,6 +30,7 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
 
         getPersistentData()
         prepareScreenUI()
+        printTimestamp()
         spinner.showActivityIndicator(self.view)
         setPersistentData()
         
@@ -44,15 +45,16 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
         
         //        self.rssTableView.separatorColor = UIColor.redColor()
         //        self.rssTableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        
-        let currentDate = rssListMOC[0].valueForKey("rssPubDate") as? String
-        let index = currentDate?.startIndex.advancedBy(11)
-        currentDateLabel.text = currentDate?.substringToIndex(index!)
-
+  
     }
 
     
+    func printTimestamp() {
+        let timestamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .NoStyle)
+        currentDateLabel.text = timestamp
+    }
     
+
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rssListMOC.count
