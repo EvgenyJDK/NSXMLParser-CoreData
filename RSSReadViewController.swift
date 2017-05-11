@@ -35,16 +35,12 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
         setPersistentData()
         
     }
-    
-    
+
     
     func prepareScreenUI() {
         
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         navigationController?.navigationBar.barTintColor = GlobalConstants.backgroundColor
-        
-        //        self.rssTableView.separatorColor = UIColor.redColor()
-        //        self.rssTableView.separatorStyle = UITableViewCellSeparatorStyle.None
   
 /* http://stackoverflow.com/questions/30531111/how-do-i-customize-a-uitableview-right-top-and-bottom-border */
         
@@ -52,18 +48,6 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
         rssTableView.layer.masksToBounds = true
         rssTableView.layer.borderColor = (GlobalConstants.backgroundColor).CGColor
         rssTableView.layer.borderWidth = 5.0
-        
-        
-//        let border = CALayer()
-//        let width = CGFloat(7.0)
-////        border.borderColor = UIColor.darkGrayColor().CGColor
-////        border.frame = CGRect(x: 0, y: rssTableView.frame.size.height - width, width:  rssTableView.frame.size.width, height: rssTableView.frame.size.height)
-//         border.frame = CGRect(x: 0, y: rssTableView.frame.size.height, width:  rssTableView.frame.size.width, height: rssTableView.frame.size.height)
-//        
-//        border.borderWidth = width
-//        rssTableView.layer.addSublayer(border)
-//        rssTableView.layer.masksToBounds = true
-        
     }
 
     
@@ -81,44 +65,18 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let itemCell = tableView.dequeueReusableCellWithIdentifier("RSSCell") as! RSSTableViewCell
-        
-        
-        //        let chevron = UIImage(named: "aftkuaQZ.jpeg")
-        //        itemCell.tintColor = UIColor.blueColor()
-        //        itemCell.accessoryType = .DisclosureIndicator
-        //        itemCell.accessoryType = .Checkmark
-        //        itemCell.accessoryView = UIImageView(image: chevron!)
-        
-        
-        
 
-        let bottomBorder = CALayer()
-        
-        bottomBorder.backgroundColor = GlobalConstants.backgroundColor.CGColor
-        bottomBorder.frame = CGRectMake(0, itemCell.frame.size.height - 1, itemCell.frame.size.width, 1)
-        itemCell.layer.addSublayer(bottomBorder)
-
-        
-        
-        
-        
-        //        let screenSize = UIScreen.mainScreen().bounds
-        //        let separatorHeight = CGFloat(3.0)
-        ////        let additionalSeparator = UIView(frame: CGRect(x: 0, y: self.view.size, width: screenSize.width, height: separatorHeight)
-        ////        let additionalSeparator = UIView.init(frame: CGRect(x: 0, y: self.frame.size.height-separatorHeight, width: screenSize.width, height: separatorHeight))
-        //        additionalSeparator.backgroundColor = UIColor.grayColor()
-        //        self.addSubview(additionalSeparator)
+//        let bottomBorder = CALayer()
+//        bottomBorder.backgroundColor = GlobalConstants.backgroundColor.CGColor
+//        bottomBorder.frame = CGRectMake(0, itemCell.frame.size.height - 1, itemCell.frame.size.width, 1)
+//        itemCell.layer.addSublayer(bottomBorder)
         
 /* http://stackoverflow.com/questions/34454924/set-tableview-cell-corner-radius-swift-2-0 */
         
-        itemCell.layer.cornerRadius = 5 //set corner radius here
-        itemCell.layer.borderColor = GlobalConstants.backgroundColor.CGColor  // set cell border color here
-        itemCell.layer.borderWidth = 3 // set border width here
-        
-        
-        
-        
-        
+        itemCell.layer.cornerRadius = 5
+        itemCell.layer.borderColor = GlobalConstants.backgroundColor.CGColor
+        itemCell.layer.borderWidth = 3 
+
         itemCell.itemTitle.text = (rssListMOC[indexPath.row].valueForKey("rssTitle")) as? String
         
         let rssDescriptionText = ((rssListMOC[indexPath.row].valueForKey("rssDescription")) as! String)
