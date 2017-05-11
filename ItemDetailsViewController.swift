@@ -32,6 +32,12 @@ class ItemDetailsViewController: UIViewController, UIScrollViewDelegate {
         self.navigationItem.title = "Apple News"
         navigationController?.navigationBar.barTintColor = GlobalConstants.backgroundColor
         
+//        itemScrollView.backgroundColor = GlobalConstants.backgroundColor
+//        itemScrollView.layer.masksToBounds = true
+//        itemScrollView.layer.borderColor = (GlobalConstants.backgroundColor).CGColor
+//        itemScrollView.layer.borderWidth = 5.0
+        
+        
         itemTitle.text = self.rssItemDetails!.title
         itemPubDate.text = self.rssItemDetails!.rssPubDate
         itemDescription.text = self.rssItemDetails!.description

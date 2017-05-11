@@ -94,32 +94,32 @@ class RSSReadViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-//        let itemURL = rssListMOC[indexPath.row].valueForKey("rssLink") as! String
-//        
-//        guard rssListMOC[indexPath.row].valueForKey("rssImage") == nil else {
-//            self.spinner.hideActivityIndicator()
-//            return self.performSegueWithIdentifier("showItemDetails", sender: indexPath)
-//        }
-//        
-//        apiService.getImageURL(itemURL) { [weak self] imageURL in
-//            self?.coreDataService.saveImageToRSSItem(indexPath.row, imageURL: imageURL as String)
-//            
-//            dispatch_async(dispatch_get_main_queue()) {
-//                self?.performSegueWithIdentifier("showItemDetails", sender: indexPath)
-//            }
-//        }
+        let itemURL = rssListMOC[indexPath.row].valueForKey("rssLink") as! String
+        
+        guard rssListMOC[indexPath.row].valueForKey("rssImage") == nil else {
+            self.spinner.hideActivityIndicator()
+            return self.performSegueWithIdentifier("showItemDetails", sender: indexPath)
+        }
+        
+        apiService.getImageURL(itemURL) { [weak self] imageURL in
+            self?.coreDataService.saveImageToRSSItem(indexPath.row, imageURL: imageURL as String)
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                self?.performSegueWithIdentifier("showItemDetails", sender: indexPath)
+            }
+        }
         
 /* Uncoment to use "delete item" functionality when row selected. Upper block-code with performSegueWithIdentifier have to be commented */
 
-        coreDataService.deleteItem(indexPath.row){[weak self] rssList in
-            print("AFTER DELETING = \(rssList.count)")
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                self?.getPersistentData()
-                self?.rssTableView.reloadData()
-                
-            }
-        }
+//        coreDataService.deleteItem(indexPath.row){[weak self] rssList in
+//            print("AFTER DELETING = \(rssList.count)")
+//            
+//            dispatch_async(dispatch_get_main_queue()) {
+//                self?.getPersistentData()
+//                self?.rssTableView.reloadData()
+//                
+//            }
+//        }
         
     }
     
