@@ -48,7 +48,7 @@ class CoreDataService {
                         print("saved to CD")
                     }
                     catch {
-                        print("Error! Can't save to CD")
+                        print("Error Can't save to CD")
                     }
                 }
             }
